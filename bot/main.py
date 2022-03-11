@@ -11,6 +11,11 @@ async def on_ready():
 @bot.command()
 async def ping(ctx):
     await ctx.send("pong")
+    
+@bot.event
+async def on_reaction_add(reaction, user):
+    role = get(member.server.roles, name="Member")
+    await bot.add_roles(user, role)
 
 if __name__ == "__main__":
     bot.run(TOKEN)
